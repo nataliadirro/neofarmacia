@@ -891,7 +891,7 @@ SQL
         return $this->doConvertBooleans(
             $item,
             static function ($boolean) {
-                return $boolean === null ? null : (int) $boolean;
+                return $boolean === null ? null : $boolean;
             }
         );
     }
@@ -1079,7 +1079,6 @@ SQL
      */
     public function getEmptyIdentityInsertSQL($quotedTableName, $quotedIdentifierColumnName)
     {
-        return 'INSERT INTO ' . $quotedTableName . ' (' . $quotedIdentifierColumnName . ') VALUES (DEFAULT)';
     }
 
     /**

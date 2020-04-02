@@ -61,17 +61,11 @@ class UserController extends AbstractController
     public function add(Request $request) : Response
     {
         $em = $this->getDoctrine()->getManager();
-        // $query = $em->createQuery("SELECT name from User::class");
-        // var_dump($query->getResult());die;
-
         $user = new User();
-        $user->setDni('05255883W');
-        $user->setName('Yorumi');
+        $user->setName('Mochuelo');
         $user->setLastname('Apellido1');
         $em->persist($user);
         $em->flush();
-
-
         //aqui se modifica en el lenguaje de cliente y se monta
 
         return new Response('Saved the new user ');

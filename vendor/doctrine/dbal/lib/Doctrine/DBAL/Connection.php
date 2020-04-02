@@ -1242,7 +1242,7 @@ class Connection implements DriverConnection
             if ($logger) {
                 $logger->startQuery('"START TRANSACTION"');
             }
-
+            // ESP EL COMIENZO DE LA TRANSACCION ES UN BEGIN TRANSACTION
             $connection->beginTransaction();
 
             if ($logger) {

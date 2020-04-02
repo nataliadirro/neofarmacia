@@ -1394,7 +1394,7 @@ class BasicEntityPersister implements EntityPersister
 
         foreach ($columns as $column) {
             $placeholder = '?';
-
+            // ESP CONVERTIR A DATABASE VALUE NO PORQUE INCORPORA LAS ? INSERCION
             if (isset($this->class->fieldNames[$column])
                 && isset($this->columnTypes[$this->class->fieldNames[$column]])
                 && isset($this->class->fieldMappings[$this->class->fieldNames[$column]]['requireSQLConversion'])) {
@@ -1404,11 +1404,11 @@ class BasicEntityPersister implements EntityPersister
 
             $values[] = $placeholder;
         }
-
+        // ESP SE GENERA LA SENTENCIA
         $columns = implode(', ', $columns);
         $values  = implode(', ', $values);
 
-        $this->insertSql = sprintf('INSERT INTO %s (%s) VALUES (%s)', $tableName, $columns, $values);
+        $this->insertSql = sprintf('INSERT INTO public.%s (%s) VALUES (%s)', $tableName, $columns, $values);
 
         return $this->insertSql;
     }
@@ -1424,7 +1424,7 @@ class BasicEntityPersister implements EntityPersister
     protected function getInsertColumnList()
     {
         $columns = [];
-
+        // ESP SE GENERA LA COLUMNA
         foreach ($this->class->reflFields as $name => $field) {
             if ($this->class->isVersioned && $this->class->versionField == $name) {
                 continue;

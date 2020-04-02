@@ -1083,7 +1083,7 @@ class UnitOfWork implements PropertyChangedListener
                 $entities[] = $entity;
             }
         }
-
+        // ESP UNIDAD DE TRABAJO QUE LLAMA AL MONTAJE DE INSERCION
         $postInsertIds = $persister->executeInserts();
 
         if ($postInsertIds) {
